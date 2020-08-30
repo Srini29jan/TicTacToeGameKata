@@ -36,12 +36,16 @@ public class Game {
             return PLAYER_X;
         }
 
-        if (getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_O
-                && getPlayerAt(POSITION_ZERO, POSITION_ONE) == PLAYER_O
-                && getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_O) {
+        if (isFirstRowFilledByPlayerO()) {
             return PLAYER_O;
         }
 
         return '\0';
+    }
+
+    private boolean isFirstRowFilledByPlayerO() {
+        return getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_O
+                && getPlayerAt(POSITION_ZERO, POSITION_ONE) == PLAYER_O
+                && getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_O;
     }
 }
