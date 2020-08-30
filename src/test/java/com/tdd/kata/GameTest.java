@@ -10,6 +10,7 @@ public class GameTest {
 
     private static final int POSITION_ZERO = 0;
     private static final int POSITION_ONE = 1;
+    private static final char PLAYER_X = 'X';
     private Game game;
 
     @Before
@@ -21,7 +22,7 @@ public class GameTest {
     public void getPlayerAtShouldReturnXAfterFirstTurn() {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
 
-        assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ZERO), Is.is('X'));
+        assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ZERO), Is.is(PLAYER_X));
     }
 
     @Test
@@ -40,6 +41,6 @@ public class GameTest {
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_ZERO, 2);
 
-        assertThat(game.getWinner(), Is.is('X'));
+        assertThat(game.getWinner(), Is.is(PLAYER_X));
     }
 }
