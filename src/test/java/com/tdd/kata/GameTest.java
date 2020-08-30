@@ -1,9 +1,9 @@
 package com.tdd.kata;
 
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class GameTest {
@@ -24,7 +24,7 @@ public class GameTest {
     public void getPlayerAtShouldReturnXAfterFirstTurn() {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
 
-        assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ZERO), Is.is(PLAYER_X));
+        assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ZERO), is(PLAYER_X));
     }
 
     @Test
@@ -32,7 +32,7 @@ public class GameTest {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
 
-        assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ONE), Is.is(PLAYER_O));
+        assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ONE), is(PLAYER_O));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class GameTest {
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_ZERO, POSITION_TWO);
 
-        assertThat(game.getWinner(), Is.is(PLAYER_X));
+        assertThat(game.getWinner(), is(PLAYER_X));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class GameTest {
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_ZERO, POSITION_TWO);
 
-        assertThat(game.getWinner(), Is.is(PLAYER_O));
+        assertThat(game.getWinner(), is(PLAYER_O));
     }
 
     @Test
@@ -70,6 +70,6 @@ public class GameTest {
         game.playAt(POSITION_ONE, POSITION_TWO);
         game.playAt(POSITION_ONE, POSITION_ZERO);
 
-        assertThat(game.getWinner(), Is.is('\0'));
+        assertThat(game.getWinner(), is('\0'));
     }
 }
