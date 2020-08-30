@@ -4,6 +4,8 @@ public class Game {
 
     private static final int GRID_SIZE = 3;
     private static final int POSITION_ZERO = 0;
+    private static final int POSITION_ONE = 1;
+    private static final int POSITION_TWO = 2;
     private static final char PLAYER_X = 'X';
     private static final char PLAYER_O = 'O';
     private final char[][] board = new char[GRID_SIZE][GRID_SIZE];
@@ -28,13 +30,15 @@ public class Game {
     }
 
     public char getWinner() {
-        if (getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_X && getPlayerAt(POSITION_ZERO, 1) == PLAYER_X && getPlayerAt(POSITION_ZERO, 2) == PLAYER_X) {
+        if (getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_X
+                && getPlayerAt(POSITION_ZERO, POSITION_ONE) == PLAYER_X
+                && getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_X) {
             return PLAYER_X;
         }
 
         if (getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_O
-                && getPlayerAt(POSITION_ZERO, 1) == PLAYER_O
-                && getPlayerAt(POSITION_ZERO, 2) == PLAYER_O) {
+                && getPlayerAt(POSITION_ZERO, POSITION_ONE) == PLAYER_O
+                && getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_O) {
             return PLAYER_O;
         }
 
