@@ -12,8 +12,16 @@ public class Game {
     }
 
     public void playAt(int row, int column) {
-        char currentPlayer = previousPlayer == PLAYER_X ? 'O' : PLAYER_X;
+        char currentPlayer = getCurrentPlayer();
         board[row][column] = currentPlayer;
+        setPreviousPlayer(currentPlayer);
+    }
+
+    private void setPreviousPlayer(char currentPlayer) {
         previousPlayer = currentPlayer;
+    }
+
+    private char getCurrentPlayer() {
+        return previousPlayer == PLAYER_X ? 'O' : PLAYER_X;
     }
 }
