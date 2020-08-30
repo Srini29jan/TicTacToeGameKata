@@ -3,7 +3,9 @@ package com.tdd.kata;
 public class Game {
 
     private static final int GRID_SIZE = 3;
+    private static final int POSITION_ZERO = 0;
     private static final char PLAYER_X = 'X';
+    private static final char PLAYER_O = 'O';
     private final char[][] board = new char[GRID_SIZE][GRID_SIZE];
     private char previousPlayer;
 
@@ -22,14 +24,14 @@ public class Game {
     }
 
     private char getCurrentPlayer() {
-        return previousPlayer == PLAYER_X ? 'O' : PLAYER_X;
+        return previousPlayer == PLAYER_X ? PLAYER_O : PLAYER_X;
     }
 
     public char getWinner() {
-        if (getPlayerAt(0, 0) == PLAYER_X && getPlayerAt(0, 1) == PLAYER_X && getPlayerAt(0, 2) == PLAYER_X) {
+        if (getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_X && getPlayerAt(POSITION_ZERO, 1) == PLAYER_X && getPlayerAt(POSITION_ZERO, 2) == PLAYER_X) {
             return PLAYER_X;
         }
 
-        return 'O';
+        return PLAYER_O;
     }
 }
