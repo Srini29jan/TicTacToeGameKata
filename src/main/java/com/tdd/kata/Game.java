@@ -38,7 +38,7 @@ public class Game {
             return PLAYER_O;
         }
 
-        if (isSecondRowFilledByPlayerX()) {
+        if (isSecondRowFilledByPlayerO(PLAYER_X)) {
             return PLAYER_X;
         }
 
