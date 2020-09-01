@@ -210,4 +210,15 @@ public class GameTest {
 
         assertThat(game.getWinner(), is(PLAYER_O));
     }
+
+    @Test
+    public void getWinnerShouldReturnXIfXFillsTopRightToBottomLeftDiagonal() {
+        game.playAt(POSITION_TWO, POSITION_ZERO);
+        game.playAt(POSITION_ZERO, POSITION_ONE);
+        game.playAt(POSITION_ONE, POSITION_ONE);
+        game.playAt(POSITION_TWO, POSITION_TWO);
+        game.playAt(POSITION_ZERO, POSITION_TWO);
+
+        assertThat(game.getWinner(), is(PLAYER_X));
+    }
 }
