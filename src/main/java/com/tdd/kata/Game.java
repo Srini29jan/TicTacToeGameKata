@@ -33,21 +33,15 @@ public class Game {
         char winner = '\0';
         if (isAnyRowFilledByPlayer(PLAYER_X)
                 || isAnyColumnFilledByPlayer(PLAYER_X)
-                || isTopLeftToBottomRightDiagonalFilledByPlayer(PLAYER_X)) {
+                || isTopLeftToBottomRightDiagonalFilledByPlayer(PLAYER_X)
+                || isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
         if (isAnyRowFilledByPlayer(PLAYER_O)
                 || isAnyColumnFilledByPlayer(PLAYER_O)
-                || isTopLeftToBottomRightDiagonalFilledByPlayer(PLAYER_O)) {
-            winner = PLAYER_O;
-        }
-
-        if (isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_X)) {
-            winner = PLAYER_X;
-        }
-
-        if (isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_O)) {
+                || isTopLeftToBottomRightDiagonalFilledByPlayer(PLAYER_O)
+                || isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_O)) {
             winner = PLAYER_O;
         }
 
