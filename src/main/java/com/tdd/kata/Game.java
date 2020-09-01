@@ -31,13 +31,13 @@ public class Game {
 
     public char getWinner() {
         char winner = '\0';
-        if (isFirstRowFilledByPlayer(PLAYER_X)
+        if (isFirstRowFilledByPlayer(PLAYER_X, POSITION_ZERO)
                 || isSecondRowFilledByPlayer(PLAYER_X)
                 || isThirdRowFilledByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
-        if (isFirstRowFilledByPlayer(PLAYER_O)
+        if (isFirstRowFilledByPlayer(PLAYER_O, POSITION_ZERO)
                 || isSecondRowFilledByPlayer(PLAYER_O)
                 || isThirdRowFilledByPlayer(PLAYER_O)) {
             winner = PLAYER_O;
@@ -58,9 +58,9 @@ public class Game {
                 && getPlayerAt(POSITION_ONE, POSITION_TWO) == player;
     }
 
-    private boolean isFirstRowFilledByPlayer(char player) {
-        return getPlayerAt(POSITION_ZERO, POSITION_ZERO) == player
-                && getPlayerAt(POSITION_ZERO, POSITION_ONE) == player
-                && getPlayerAt(POSITION_ZERO, POSITION_TWO) == player;
+    private boolean isFirstRowFilledByPlayer(char player, int positionZero) {
+        return getPlayerAt(positionZero, POSITION_ZERO) == player
+                && getPlayerAt(positionZero, POSITION_ONE) == player
+                && getPlayerAt(positionZero, POSITION_TWO) == player;
     }
 }
