@@ -46,18 +46,6 @@ public class Game {
         return winner;
     }
 
-    private boolean isThirdRowFilledByPlayer(char player) {
-        return getPlayerAt(POSITION_TWO, POSITION_ZERO) == player
-                && getPlayerAt(POSITION_TWO, POSITION_ONE) == player
-                && getPlayerAt(POSITION_TWO, POSITION_TWO) == player;
-    }
-
-    private boolean isSecondRowFilledByPlayer(char player) {
-        return getPlayerAt(POSITION_ONE, POSITION_ZERO) == player
-                && getPlayerAt(POSITION_ONE, POSITION_ONE) == player
-                && getPlayerAt(POSITION_ONE, POSITION_TWO) == player;
-    }
-
     private boolean isFirstRowFilledByPlayer(char player, int positionZero) {
         return getPlayerAt(positionZero, POSITION_ZERO) == player
                 && getPlayerAt(positionZero, POSITION_ONE) == player
