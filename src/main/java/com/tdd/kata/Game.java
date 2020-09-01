@@ -32,22 +32,22 @@ public class Game {
     public char getWinner() {
         char winner = '\0';
         if (isAnyRowFilledByPlayer(PLAYER_X)
-                || isAnyColumnFilledByPlayerO(PLAYER_X)) {
+                || isAnyColumnFilledByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
         if (isAnyRowFilledByPlayer(PLAYER_O)
-                || isAnyColumnFilledByPlayerO(PLAYER_O)) {
+                || isAnyColumnFilledByPlayer(PLAYER_O)) {
             winner = PLAYER_O;
         }
 
         return winner;
     }
 
-    private boolean isAnyColumnFilledByPlayerO(char playerO) {
-        return isColumnFilledByPlayer(POSITION_ZERO, playerO)
-                || isColumnFilledByPlayer(POSITION_ONE, playerO)
-                || isColumnFilledByPlayer(POSITION_TWO, playerO);
+    private boolean isAnyColumnFilledByPlayer(char player) {
+        return isColumnFilledByPlayer(POSITION_ZERO, player)
+                || isColumnFilledByPlayer(POSITION_ONE, player)
+                || isColumnFilledByPlayer(POSITION_TWO, player);
     }
 
     private boolean isColumnFilledByPlayer(int columnPosition, char player) {
