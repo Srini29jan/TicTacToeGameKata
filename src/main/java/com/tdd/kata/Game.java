@@ -35,13 +35,17 @@ public class Game {
             winner = PLAYER_X;
         }
 
-        if (isAnyRowFilledByPlayer(PLAYER_O)
-                || isAnyColumnFilledByPlayer(PLAYER_O)
-                || isAnyDiagonalFilledByPlayer(PLAYER_O)) {
+        if (isGameWonByPlayerO()) {
             winner = PLAYER_O;
         }
 
         return winner;
+    }
+
+    private boolean isGameWonByPlayerO() {
+        return isAnyRowFilledByPlayer(PLAYER_O)
+                || isAnyColumnFilledByPlayer(PLAYER_O)
+                || isAnyDiagonalFilledByPlayer(PLAYER_O);
     }
 
     private boolean isGameWonByPlayerX() {
