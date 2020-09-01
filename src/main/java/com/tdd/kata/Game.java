@@ -32,14 +32,14 @@ public class Game {
     public char getWinner() {
         char winner = '\0';
         if (isFirstRowFilledByPlayer(PLAYER_X, POSITION_ZERO)
-                || isSecondRowFilledByPlayer(PLAYER_X)
-                || isThirdRowFilledByPlayer(PLAYER_X)) {
+                || isFirstRowFilledByPlayer(PLAYER_X, POSITION_ONE)
+                || isFirstRowFilledByPlayer(PLAYER_X, POSITION_TWO)) {
             winner = PLAYER_X;
         }
 
         if (isFirstRowFilledByPlayer(PLAYER_O, POSITION_ZERO)
-                || isSecondRowFilledByPlayer(PLAYER_O)
-                || isThirdRowFilledByPlayer(PLAYER_O)) {
+                || isFirstRowFilledByPlayer(PLAYER_O, POSITION_ONE)
+                || isFirstRowFilledByPlayer(PLAYER_O, POSITION_TWO)) {
             winner = PLAYER_O;
         }
 
