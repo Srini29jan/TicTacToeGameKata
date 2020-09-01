@@ -43,13 +43,17 @@ public class Game {
             winner = PLAYER_X;
         }
 
-        if (getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_O
-                && getPlayerAt(POSITION_ONE, POSITION_ZERO) == PLAYER_O
-                && getPlayerAt(POSITION_TWO, POSITION_ZERO) == PLAYER_O) {
+        if (isFirstColumnFilledByPlayerO()) {
             winner = PLAYER_O;
         }
 
         return winner;
+    }
+
+    private boolean isFirstColumnFilledByPlayerO() {
+        return getPlayerAt(POSITION_ZERO, POSITION_ZERO) == PLAYER_O
+                && getPlayerAt(POSITION_ONE, POSITION_ZERO) == PLAYER_O
+                && getPlayerAt(POSITION_TWO, POSITION_ZERO) == PLAYER_O;
     }
 
     private boolean isFirstColumnFilledByPlayerX() {
