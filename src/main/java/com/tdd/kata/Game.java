@@ -41,21 +41,21 @@ public class Game {
             winner = PLAYER_O;
         }
 
-        if (isThirdRowFilledByPlayerO(PLAYER_X)) {
+        if (isThirdRowFilledByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
-        if (isThirdRowFilledByPlayerO(PLAYER_O)) {
+        if (isThirdRowFilledByPlayer(PLAYER_O)) {
             winner = PLAYER_O;
         }
 
         return winner;
     }
 
-    private boolean isThirdRowFilledByPlayerO(char playerO) {
-        return getPlayerAt(POSITION_TWO, POSITION_ZERO) == playerO
-                && getPlayerAt(POSITION_TWO, POSITION_ONE) == playerO
-                && getPlayerAt(POSITION_TWO, POSITION_TWO) == playerO;
+    private boolean isThirdRowFilledByPlayer(char player) {
+        return getPlayerAt(POSITION_TWO, POSITION_ZERO) == player
+                && getPlayerAt(POSITION_TWO, POSITION_ONE) == player
+                && getPlayerAt(POSITION_TWO, POSITION_TWO) == player;
     }
 
     private boolean isSecondRowFilledByPlayer(char player) {
