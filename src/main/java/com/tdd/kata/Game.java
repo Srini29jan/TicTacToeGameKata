@@ -31,7 +31,7 @@ public class Game {
 
     public char getWinner() {
         char winner = '\0';
-        if (isGameWonByPlayerX()) {
+        if (isGameWonByPlayerO(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
