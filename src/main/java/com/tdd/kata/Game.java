@@ -41,7 +41,7 @@ public class Game {
             winner = PLAYER_O;
         }
 
-        if (isThirdRowFilledByPlayerX()) {
+        if (isThirdRowFilledByPlayerO(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
