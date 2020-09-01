@@ -35,13 +35,17 @@ public class Game {
             winner = PLAYER_X;
         }
 
-        if (isRowFilledByPlayer(POSITION_ZERO, PLAYER_O)
-                || isRowFilledByPlayer(POSITION_ONE, PLAYER_O)
-                || isRowFilledByPlayer(POSITION_TWO, PLAYER_O)) {
+        if (isAnyRowFilledByPlayerO()) {
             winner = PLAYER_O;
         }
 
         return winner;
+    }
+
+    private boolean isAnyRowFilledByPlayerO() {
+        return isRowFilledByPlayer(POSITION_ZERO, PLAYER_O)
+                || isRowFilledByPlayer(POSITION_ONE, PLAYER_O)
+                || isRowFilledByPlayer(POSITION_TWO, PLAYER_O);
     }
 
     private boolean isAnyRowFilledByPlayerX() {
