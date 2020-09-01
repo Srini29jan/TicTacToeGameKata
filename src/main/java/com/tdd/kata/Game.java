@@ -43,7 +43,7 @@ public class Game {
             winner = PLAYER_O;
         }
 
-        if (isThirdColumnFilledByPlayerX()) {
+        if (isThirdColumnFilledByPlayerO(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
