@@ -32,7 +32,7 @@ public class Game {
     public char getWinner() {
         char winner = '\0';
         if (isAnyRowFilledByPlayer(PLAYER_X)
-                || isAnyColumnFilledByPlayerX()) {
+                || isAnyColumnFilledByPlayerO(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
