@@ -41,7 +41,7 @@ public class Game {
             winner = PLAYER_O;
         }
 
-        if (isTopLeftToBottomRightDiagonalFilledByPlayerX()) {
+        if (isTopLeftToBottomRightDiagonalFilledByPlayerO(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
