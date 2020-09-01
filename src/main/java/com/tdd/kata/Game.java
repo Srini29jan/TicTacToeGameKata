@@ -37,13 +37,17 @@ public class Game {
         }
 
         if (isAnyRowFilledByPlayer(PLAYER_O)
-                || isColumnFilledByPlayer(POSITION_ZERO, PLAYER_O)
-                || isColumnFilledByPlayer(POSITION_ONE, PLAYER_O)
-                || isColumnFilledByPlayer(POSITION_TWO, PLAYER_O)) {
+                || isAnyColumnFilledByPlayerO()) {
             winner = PLAYER_O;
         }
 
         return winner;
+    }
+
+    private boolean isAnyColumnFilledByPlayerO() {
+        return isColumnFilledByPlayer(POSITION_ZERO, PLAYER_O)
+                || isColumnFilledByPlayer(POSITION_ONE, PLAYER_O)
+                || isColumnFilledByPlayer(POSITION_TWO, PLAYER_O);
     }
 
     private boolean isAnyColumnFilledByPlayerX() {
