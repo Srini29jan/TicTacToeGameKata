@@ -48,12 +48,6 @@ public class Game {
                 || isAnyDiagonalFilledByPlayer(playerO);
     }
 
-    private boolean isGameWonByPlayerX() {
-        return isAnyRowFilledByPlayer(PLAYER_X)
-                || isAnyColumnFilledByPlayer(PLAYER_X)
-                || isAnyDiagonalFilledByPlayer(PLAYER_X);
-    }
-
     private boolean isAnyDiagonalFilledByPlayer(char player) {
         return isTopLeftToBottomRightDiagonalFilledByPlayer(player)
                 || isTopRightToBottomLeftDiagonalFilledByPlayer(player);
