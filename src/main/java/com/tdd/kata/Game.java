@@ -47,13 +47,17 @@ public class Game {
             winner = PLAYER_X;
         }
 
-        if (getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_O
-                && getPlayerAt(POSITION_ONE, POSITION_ONE) == PLAYER_O
-                && getPlayerAt(POSITION_TWO, POSITION_ZERO) == PLAYER_O) {
+        if (isTopRightToBottomLeftDiagonalFilledByPlayerO()) {
             winner = PLAYER_O;
         }
 
         return winner;
+    }
+
+    private boolean isTopRightToBottomLeftDiagonalFilledByPlayerO() {
+        return getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_O
+                && getPlayerAt(POSITION_ONE, POSITION_ONE) == PLAYER_O
+                && getPlayerAt(POSITION_TWO, POSITION_ZERO) == PLAYER_O;
     }
 
     private boolean isTopRightToBottomLeftDiagonalFilledByPlayerX() {
