@@ -43,6 +43,12 @@ public class Game {
             winner = PLAYER_O;
         }
 
+        if (getPlayerAt(POSITION_ZERO, POSITION_TWO) == PLAYER_X
+                && getPlayerAt(POSITION_ONE, POSITION_TWO) == PLAYER_X
+                && getPlayerAt(POSITION_TWO, POSITION_TWO) == PLAYER_X) {
+            winner = PLAYER_X;
+        }
+
         return winner;
     }
 
