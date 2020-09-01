@@ -50,12 +50,6 @@ public class Game {
                 || isColumnFilledByPlayer(POSITION_TWO, playerO);
     }
 
-    private boolean isAnyColumnFilledByPlayerX() {
-        return isColumnFilledByPlayer(POSITION_ZERO, PLAYER_X)
-                || isColumnFilledByPlayer(POSITION_ONE, PLAYER_X)
-                || isColumnFilledByPlayer(POSITION_TWO, PLAYER_X);
-    }
-
     private boolean isColumnFilledByPlayer(int columnPosition, char player) {
         return getPlayerAt(POSITION_ZERO, columnPosition) == player
                 && getPlayerAt(POSITION_ONE, columnPosition) == player
