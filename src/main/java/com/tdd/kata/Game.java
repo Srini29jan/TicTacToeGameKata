@@ -48,18 +48,6 @@ public class Game {
         return winner;
     }
 
-    private boolean isThirdColumnFilledByPlayer(char player) {
-        return getPlayerAt(POSITION_ZERO, POSITION_TWO) == player
-                && getPlayerAt(POSITION_ONE, POSITION_TWO) == player
-                && getPlayerAt(POSITION_TWO, POSITION_TWO) == player;
-    }
-
-    private boolean isSecondColumnFilledByPlayer(char player) {
-        return getPlayerAt(POSITION_ZERO, POSITION_ONE) == player
-                && getPlayerAt(POSITION_ONE, POSITION_ONE) == player
-                && getPlayerAt(POSITION_TWO, POSITION_ONE) == player;
-    }
-
     private boolean isFirstColumnFilledByPlayer(char player, int positionZero) {
         return getPlayerAt(POSITION_ZERO, positionZero) == player
                 && getPlayerAt(POSITION_ONE, positionZero) == player
