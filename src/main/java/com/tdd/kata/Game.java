@@ -39,12 +39,16 @@ public class Game {
 
         if (isAnyRowFilledByPlayer(PLAYER_O)
                 || isAnyColumnFilledByPlayer(PLAYER_O)
-                || isTopLeftToBottomRightDiagonalFilledByPlayer(PLAYER_O)
-                || isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_O)) {
+                || isAnyDiagonalFilledByPlayerO()) {
             winner = PLAYER_O;
         }
 
         return winner;
+    }
+
+    private boolean isAnyDiagonalFilledByPlayerO() {
+        return isTopLeftToBottomRightDiagonalFilledByPlayer(PLAYER_O)
+                || isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_O);
     }
 
     private boolean isAnyDiagonalFilledByPlayerX() {
