@@ -43,21 +43,21 @@ public class Game {
             winner = PLAYER_O;
         }
 
-        if (isTopRightToBottomLeftDiagonalFilledByPlayerO(PLAYER_X)) {
+        if (isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
-        if (isTopRightToBottomLeftDiagonalFilledByPlayerO(PLAYER_O)) {
+        if (isTopRightToBottomLeftDiagonalFilledByPlayer(PLAYER_O)) {
             winner = PLAYER_O;
         }
 
         return winner;
     }
 
-    private boolean isTopRightToBottomLeftDiagonalFilledByPlayerO(char playerO) {
-        return getPlayerAt(POSITION_ZERO, POSITION_TWO) == playerO
-                && getPlayerAt(POSITION_ONE, POSITION_ONE) == playerO
-                && getPlayerAt(POSITION_TWO, POSITION_ZERO) == playerO;
+    private boolean isTopRightToBottomLeftDiagonalFilledByPlayer(char player) {
+        return getPlayerAt(POSITION_ZERO, POSITION_TWO) == player
+                && getPlayerAt(POSITION_ONE, POSITION_ONE) == player
+                && getPlayerAt(POSITION_TWO, POSITION_ZERO) == player;
     }
 
     private boolean isTopLeftToBottomRightDiagonalFilledByPlayer(char player) {
