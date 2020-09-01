@@ -31,19 +31,13 @@ public class Game {
 
     public char getWinner() {
         char winner = '\0';
-        if (isAnyRowFilledByPlayer(PLAYER_X)) {
+        if (isAnyRowFilledByPlayer(PLAYER_X)
+                || isFirstColumnFilledByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
 
-        if (isAnyRowFilledByPlayer(PLAYER_O)) {
-            winner = PLAYER_O;
-        }
-
-        if (isFirstColumnFilledByPlayer(PLAYER_X)) {
-            winner = PLAYER_X;
-        }
-
-        if (isFirstColumnFilledByPlayer(PLAYER_O)) {
+        if (isAnyRowFilledByPlayer(PLAYER_O)
+                || isFirstColumnFilledByPlayer(PLAYER_O)) {
             winner = PLAYER_O;
         }
 
