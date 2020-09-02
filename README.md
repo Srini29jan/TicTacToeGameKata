@@ -17,4 +17,5 @@
  Java 1.8+
  Junit 4.11+
  Maven 3.6.3+
+ Mockito 1.10.19+
  ~~~
