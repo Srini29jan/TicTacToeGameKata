@@ -35,7 +35,7 @@ public class GameRunnerTest {
     }
 
     @Test
-    public void instructionsShouldBePrintedOnGameStart() {
+    public void instructionsShouldBePrintedOnGameStart() throws InvalidMoveException {
         String instruction = new StringBuilder("Welcome to TicTacToe game!!\n")
                 .append("This is a game on a board of size 3x3\n")
                 .append("Position of each box is represented by a combination of two numbers as below\n")
@@ -54,21 +54,21 @@ public class GameRunnerTest {
     }
 
     @Test
-    public void positionInputShouldBeCollectedAfterPrintingInstructions() {
+    public void positionInputShouldBeCollectedAfterPrintingInstructions() throws InvalidMoveException {
         gameRunner.play();
 
         verify(scanner, atLeastOnce()).nextLine();
     }
 
     @Test
-    public void collectedPositionInputShouldBePassedToGame() {
+    public void collectedPositionInputShouldBePassedToGame() throws InvalidMoveException {
         gameRunner.play();
 
         verify(game, atLeastOnce()).playAt(2, 0);
     }
 
     @Test
-    public void gameShouldBePlayedUntilItsOver() {
+    public void gameShouldBePlayedUntilItsOver() throws InvalidMoveException {
         when(scanner.nextLine()).thenReturn("2 0", "1 0", "2 1");
         when(game.isOver()).thenReturn(false, false, false, true);
 
@@ -79,7 +79,7 @@ public class GameRunnerTest {
     }
 
     @Test
-    public void gameResultShouldBePrintedAsDrawWhenGameIsDraw() {
+    public void gameResultShouldBePrintedAsDrawWhenGameIsDraw() throws InvalidMoveException {
         when(game.isDraw()).thenReturn(true);
         TestableGameRunner testableGameRunner = new TestableGameRunner(scanner, game);
 
@@ -91,7 +91,7 @@ public class GameRunnerTest {
     }
 
     @Test
-    public void gameResultShouldBePrintedWithWinnerNameWhenGameResultIsNotADraw() {
+    public void gameResultShouldBePrintedWithWinnerNameWhenGameResultIsNotADraw() throws InvalidMoveException {
         char winner = 'X';
         String winnerMessage = "Player " + winner + " won!!";
         when(game.isDraw()).thenReturn(false);

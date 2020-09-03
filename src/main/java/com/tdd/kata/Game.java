@@ -15,11 +15,15 @@ public class Game {
         return board[row][column];
     }
 
-    public void playAt(int row, int column) {
-        char currentPlayer = getCurrentPlayer();
-        board[row][column] = currentPlayer;
-        numberOfCellsFilled++;
-        setPreviousPlayer(currentPlayer);
+    public void playAt(int row, int column) throws InvalidMoveException {
+        if (row >= POSITION_ZERO) {
+            char currentPlayer = getCurrentPlayer();
+            board[row][column] = currentPlayer;
+            numberOfCellsFilled++;
+            setPreviousPlayer(currentPlayer);
+        } else {
+            throw new InvalidMoveException("Invalid position; please choose from position 0 or 1 or 2");
+        }
     }
 
     private void setPreviousPlayer(char currentPlayer) {

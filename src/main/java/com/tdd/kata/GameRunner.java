@@ -19,7 +19,7 @@ public class GameRunner {
         this.game = game;
     }
 
-    public void play() {
+    public void play() throws InvalidMoveException {
         printInitialInstructions();
 
         playGame();
@@ -35,7 +35,7 @@ public class GameRunner {
         }
     }
 
-    private void playGame() {
+    private void playGame() throws InvalidMoveException {
         while (!game.isOver()) {
             String position = scanner.nextLine();
             int row = Integer.valueOf(position.substring(0, 1));

@@ -21,14 +21,14 @@ public class GameTest {
     }
 
     @Test
-    public void getPlayerAtShouldReturnXAfterFirstTurn() {
+    public void getPlayerAtShouldReturnXAfterFirstTurn() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
 
         assertThat(game.getPlayerAt(POSITION_ZERO, POSITION_ZERO), is(Player.PLAYER_X.getValue()));
     }
 
     @Test
-    public void getPlayerAtShouldReturnOAfterSecondTurn() {
+    public void getPlayerAtShouldReturnOAfterSecondTurn() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
 
@@ -36,7 +36,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsFirstRow() {
+    public void getWinnerShouldReturnXIfXFillsFirstRow() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
@@ -47,7 +47,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsFirstRow() {
+    public void getWinnerShouldReturnOIfOFillsFirstRow() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ZERO);
@@ -59,7 +59,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnEmptyCharacterIfFirstRowIsNotFilledBySamePlayer() {
+    public void getWinnerShouldReturnEmptyCharacterIfFirstRowIsNotFilledBySamePlayer() throws InvalidMoveException {
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
@@ -74,7 +74,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsSecondRow() {
+    public void getWinnerShouldReturnXIfXFillsSecondRow() throws InvalidMoveException {
         game.playAt(POSITION_ONE, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ONE);
@@ -85,7 +85,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsSecondRow() {
+    public void getWinnerShouldReturnOIfOFillsSecondRow() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_TWO);
         game.playAt(POSITION_ONE, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
@@ -97,7 +97,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsThirdRow() {
+    public void getWinnerShouldReturnXIfXFillsThirdRow() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_TWO, POSITION_ONE);
@@ -108,7 +108,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsThirdRow() {
+    public void getWinnerShouldReturnOIfOFillsThirdRow() throws InvalidMoveException {
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
@@ -120,7 +120,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsFirstColumn() {
+    public void getWinnerShouldReturnXIfXFillsFirstColumn() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
         game.playAt(POSITION_ONE, POSITION_ZERO);
@@ -131,7 +131,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsFirstColumn() {
+    public void getWinnerShouldReturnOIfOFillsFirstColumn() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_TWO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
@@ -143,7 +143,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsSecondColumn() {
+    public void getWinnerShouldReturnXIfXFillsSecondColumn() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ONE);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ONE);
@@ -154,7 +154,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsSecondColumn() {
+    public void getWinnerShouldReturnOIfOFillsSecondColumn() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
         game.playAt(POSITION_ZERO, POSITION_TWO);
@@ -166,7 +166,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsThirdColumn() {
+    public void getWinnerShouldReturnXIfXFillsThirdColumn() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_TWO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_TWO);
@@ -177,7 +177,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsThirdColumn() {
+    public void getWinnerShouldReturnOIfOFillsThirdColumn() throws InvalidMoveException {
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_ZERO, POSITION_TWO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
@@ -189,7 +189,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsTopLeftToBottomRightDiagonal() {
+    public void getWinnerShouldReturnXIfXFillsTopLeftToBottomRightDiagonal() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_TWO);
         game.playAt(POSITION_ONE, POSITION_ONE);
@@ -200,7 +200,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsTopLeftToBottomRightDiagonal() {
+    public void getWinnerShouldReturnOIfOFillsTopLeftToBottomRightDiagonal() throws InvalidMoveException {
         game.playAt(POSITION_ONE, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_TWO);
@@ -212,7 +212,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnXIfXFillsTopRightToBottomLeftDiagonal() {
+    public void getWinnerShouldReturnXIfXFillsTopRightToBottomLeftDiagonal() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
         game.playAt(POSITION_ONE, POSITION_ONE);
@@ -223,7 +223,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnOIfOFillsTopRightToBottomLeftDiagonal() {
+    public void getWinnerShouldReturnOIfOFillsTopRightToBottomLeftDiagonal() throws InvalidMoveException {
         game.playAt(POSITION_ONE, POSITION_TWO);
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
@@ -235,7 +235,7 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerShouldReturnNullIfAllCellsAreFilledAndNeitherPlayerWon() {
+    public void getWinnerShouldReturnNullIfAllCellsAreFilledAndNeitherPlayerWon() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_TWO, POSITION_ZERO);
@@ -250,7 +250,7 @@ public class GameTest {
     }
 
     @Test
-    public void isDrawShouldReturnTrueIfAllCellsAreFilledAndNeitherPlayerWon() {
+    public void isDrawShouldReturnTrueIfAllCellsAreFilledAndNeitherPlayerWon() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_TWO, POSITION_ZERO);
@@ -265,7 +265,7 @@ public class GameTest {
     }
 
     @Test
-    public void isOverShouldReturnTrueIfPlayerXWon() {
+    public void isOverShouldReturnTrueIfPlayerXWon() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ONE);
@@ -276,7 +276,7 @@ public class GameTest {
     }
 
     @Test
-    public void isOverShouldReturnTrueIfPlayerOWon() {
+    public void isOverShouldReturnTrueIfPlayerOWon() throws InvalidMoveException {
         game.playAt(POSITION_TWO, POSITION_ZERO);
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ZERO);
@@ -288,7 +288,7 @@ public class GameTest {
     }
 
     @Test
-    public void isOverShouldReturnTrueIfNeitherPlayerWonAndAllCellsAreFilled() {
+    public void isOverShouldReturnTrueIfNeitherPlayerWonAndAllCellsAreFilled() throws InvalidMoveException {
         game.playAt(POSITION_ZERO, POSITION_ZERO);
         game.playAt(POSITION_ONE, POSITION_ONE);
         game.playAt(POSITION_TWO, POSITION_ZERO);
@@ -300,5 +300,10 @@ public class GameTest {
         game.playAt(POSITION_ZERO, POSITION_TWO);
 
         assertTrue(game.isOver());
+    }
+
+    @Test(expected = InvalidMoveException.class)
+    public void playAtShouldShouldThrowExceptionIfRowIsLessThanZero() throws InvalidMoveException {
+        game.playAt(-POSITION_ONE, POSITION_ZERO);
     }
 }
