@@ -2,17 +2,33 @@ package com.tdd.kata;
 
 import com.tdd.kata.io.InputScanner;
 import org.hamcrest.core.Is;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertThat;
 
 public class GameRunnerTest {
+
+    @Mock
+    private InputScanner scanner;
+
+    @Mock
+    private Game game;
+
+    @InjectMocks
+    private GameRunner gameRunner;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
     @Test
     public void instructionsShouldBePrintedOnGameStart() {
-        InputScanner scanner = Mockito.mock(InputScanner.class);
-        Game game = Mockito.mock(Game.class);
-
         Mockito.when(scanner.nextLine()).thenReturn("2 0");
 
         String instruction = new StringBuilder("Welcome to TicTacToe game!!\n")
@@ -34,24 +50,18 @@ public class GameRunnerTest {
 
     @Test
     public void positionInputShouldBeCollectedAfterPrintingInstructions() {
-        InputScanner scanner = Mockito.mock(InputScanner.class);
-        Game game = Mockito.mock(Game.class);
-
         Mockito.when(scanner.nextLine()).thenReturn("2 0");
 
-        new GameRunner(scanner, game).play();
+        gameRunner.play();
 
         Mockito.verify(scanner, Mockito.atLeastOnce()).nextLine();
     }
 
     @Test
     public void collectedPositionInputShouldBePassedToGame() {
-        InputScanner scanner = Mockito.mock(InputScanner.class);
-        Game game = Mockito.mock(Game.class);
-
         Mockito.when(scanner.nextLine()).thenReturn("2 0");
 
-        new GameRunner(scanner, game).play();
+        gameRunner.play();
 
         Mockito.verify(game, Mockito.atLeastOnce()).playAt(2, 0);
     }
