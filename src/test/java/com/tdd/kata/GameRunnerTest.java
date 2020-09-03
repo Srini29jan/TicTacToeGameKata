@@ -4,10 +4,7 @@ import com.tdd.kata.io.InputScanner;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 
 import static org.junit.Assert.assertThat;
 
@@ -30,6 +27,7 @@ public class GameRunnerTest {
     @Test
     public void instructionsShouldBePrintedOnGameStart() {
         Mockito.when(scanner.nextLine()).thenReturn("2 0");
+        Mockito.when(game.isOver()).thenReturn(false, true);
 
         String instruction = new StringBuilder("Welcome to TicTacToe game!!\n")
                 .append("This is a game on a board of size 3x3\n")
@@ -51,6 +49,7 @@ public class GameRunnerTest {
     @Test
     public void positionInputShouldBeCollectedAfterPrintingInstructions() {
         Mockito.when(scanner.nextLine()).thenReturn("2 0");
+        Mockito.when(game.isOver()).thenReturn(false, true);
 
         gameRunner.play();
 
@@ -60,10 +59,24 @@ public class GameRunnerTest {
     @Test
     public void collectedPositionInputShouldBePassedToGame() {
         Mockito.when(scanner.nextLine()).thenReturn("2 0");
+        Mockito.when(game.isOver()).thenReturn(false, true);
 
         gameRunner.play();
 
         Mockito.verify(game, Mockito.atLeastOnce()).playAt(2, 0);
+    }
+
+    @Test
+    public void gameShouldBePlayedUntilItsOver() {
+        Mockito.when(scanner.nextLine()).thenReturn("2 0");
+        Mockito.when(scanner.nextLine()).thenReturn("1 0");
+        Mockito.when(scanner.nextLine()).thenReturn("2 1");
+        Mockito.when(game.isOver()).thenReturn(false, false, false, true);
+
+        gameRunner.play();
+
+        Mockito.verify(scanner, Mockito.times(3)).nextLine();
+        Mockito.verify(game, Mockito.times(3)).playAt(Matchers.anyInt(), Matchers.anyInt());
     }
 
     private class TestableGameRunner extends GameRunner {

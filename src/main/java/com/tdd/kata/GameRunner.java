@@ -32,11 +32,13 @@ public class GameRunner {
                 .append("Mark your position:\n");
         print(instruction.toString());
 
-        String position = scanner.nextLine();
-        int row = Integer.valueOf(position.substring(0, 1));
-        int column = Integer.valueOf(position.substring(2));
+        while (!game.isOver()) {
+            String position = scanner.nextLine();
+            int row = Integer.valueOf(position.substring(0, 1));
+            int column = Integer.valueOf(position.substring(2));
 
-        game.playAt(row, column);
+            game.playAt(row, column);
+        }
     }
 
     protected void print(String message) {
