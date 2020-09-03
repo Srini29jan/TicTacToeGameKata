@@ -7,8 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyInt;
@@ -52,7 +50,7 @@ public class GameRunnerTest {
 
         testableGameRunner.play();
 
-        assertThat(testableGameRunner.getMessage(), is(instruction));
+        assertTrue(testableGameRunner.getMessage().contains(instruction));
     }
 
     @Test
@@ -92,20 +90,35 @@ public class GameRunnerTest {
         assertTrue(message.contains("Game is draw!!"));
     }
 
+    @Test
+    public void gameResultShouldBePrintedWithWinnerNameWhenGameResultIsNotADraw() {
+        char winner = 'X';
+        String winnerMessage = "Player " + winner + " won!!";
+        when(game.isDraw()).thenReturn(false);
+        when(game.getWinner()).thenReturn(winner);
+        TestableGameRunner testableGameRunner = new TestableGameRunner(scanner, game);
+
+        testableGameRunner.play();
+
+        String message = testableGameRunner.getMessage();
+        assertNotNull(message);
+        assertTrue(message.contains(winnerMessage));
+    }
+
     private class TestableGameRunner extends GameRunner {
         public TestableGameRunner(InputScanner scanner, Game game) {
             super(scanner, game);
         }
 
-        private String message;
+        private StringBuilder message = new StringBuilder();
 
         @Override
         protected void print(String message) {
-            this.message = message;
+            this.message.append(message);
         }
 
         public String getMessage() {
-            return message;
+            return message.toString();
         }
     }
 }

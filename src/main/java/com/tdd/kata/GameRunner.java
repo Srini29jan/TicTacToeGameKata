@@ -42,6 +42,8 @@ public class GameRunner {
 
         if (game.isDraw()) {
             print("Game is draw!!");
+        } else {
+            print("Player " + game.getWinner() + " won!!");
         }
     }
 
