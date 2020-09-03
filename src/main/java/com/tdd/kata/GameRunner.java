@@ -8,13 +8,15 @@ import java.util.logging.Logger;
 public class GameRunner {
     private static final Logger logger = Logger.getLogger(GameRunner.class.getName());
     private final InputScanner scanner;
+    private final Game game;
 
     public GameRunner() {
-        this(new InputScanner());
+        this(new InputScanner(), new Game());
     }
 
-    public GameRunner(InputScanner scanner) {
+    public GameRunner(InputScanner scanner, Game game) {
         this.scanner = scanner;
+        this.game = game;
     }
 
     public void play() {
@@ -30,7 +32,11 @@ public class GameRunner {
                 .append("Mark your position:\n");
         print(instruction.toString());
 
-        scanner.nextLine();
+        String position = scanner.nextLine();
+        int row = Integer.valueOf(position.substring(0, 1));
+        int column = Integer.valueOf(position.substring(2));
+
+        game.playAt(row, column);
     }
 
     protected void print(String message) {
