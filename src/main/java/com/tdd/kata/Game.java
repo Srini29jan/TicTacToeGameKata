@@ -92,4 +92,8 @@ public class Game {
     public boolean isOver() {
         return false;
     }
+
+    public boolean isDraw() {
+        return false;
+    }
 }

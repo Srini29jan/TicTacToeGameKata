@@ -39,6 +39,10 @@ public class GameRunner {
 
             game.playAt(row, column);
         }
+
+        if (game.isDraw()) {
+            print("Game is draw!!");
+        }
     }
 
     protected void print(String message) {

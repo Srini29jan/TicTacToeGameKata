@@ -9,6 +9,8 @@ import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.times;
@@ -76,6 +78,18 @@ public class GameRunnerTest {
 
         verify(scanner, times(3)).nextLine();
         verify(game, times(3)).playAt(anyInt(), anyInt());
+    }
+
+    @Test
+    public void gameResultShouldBePrintedAsDrawWhenGameIsDraw() {
+        when(game.isDraw()).thenReturn(true);
+        TestableGameRunner testableGameRunner = new TestableGameRunner(scanner, game);
+
+        testableGameRunner.play();
+
+        String message = testableGameRunner.getMessage();
+        assertNotNull(message);
+        assertTrue(message.contains("Game is draw!!"));
     }
 
     private class TestableGameRunner extends GameRunner {
