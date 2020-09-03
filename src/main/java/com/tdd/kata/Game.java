@@ -17,10 +17,14 @@ public class Game {
 
     public void playAt(int row, int column) throws InvalidMoveException {
         if (isValidPosition(row, column)) {
-            char currentPlayer = getCurrentPlayer();
-            board[row][column] = currentPlayer;
-            numberOfCellsFilled++;
-            setPreviousPlayer(currentPlayer);
+            if (board[row][column] == CHARACTER_NULL) {
+                char currentPlayer = getCurrentPlayer();
+                board[row][column] = currentPlayer;
+                numberOfCellsFilled++;
+                setPreviousPlayer(currentPlayer);
+            } else {
+                throw new InvalidMoveException("Invalid position; please choose a position which is unoccupied in the board");
+            }
         } else {
             throw new InvalidMoveException("Invalid position; please choose from position 0 or 1 or 2");
         }

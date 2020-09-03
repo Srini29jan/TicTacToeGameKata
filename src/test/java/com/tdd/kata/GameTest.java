@@ -321,4 +321,10 @@ public class GameTest {
     public void playAtShouldShouldThrowExceptionIfColumnIsGreaterThanTwo() throws InvalidMoveException {
         game.playAt(POSITION_ONE, 3);
     }
+
+    @Test(expected = InvalidMoveException.class)
+    public void playAtShouldShouldThrowExceptionIfSelectedPositionIsNotNull() throws InvalidMoveException {
+        game.playAt(POSITION_ONE, POSITION_ONE);
+        game.playAt(POSITION_ONE, POSITION_ONE);
+    }
 }
