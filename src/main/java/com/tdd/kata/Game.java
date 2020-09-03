@@ -49,14 +49,13 @@ public class Game {
 
     public char getWinner() {
         char winner = CHARACTER_NULL;
-        if (isGameWonByPlayer(Player.PLAYER_X.getValue())) {
-            winner = Player.PLAYER_X.getValue();
+        if (numberOfCellsFilled >= 5) {
+            if (isGameWonByPlayer(Player.PLAYER_X.getValue())) {
+                winner = Player.PLAYER_X.getValue();
+            } else if (isGameWonByPlayer(Player.PLAYER_O.getValue())) {
+                winner = Player.PLAYER_O.getValue();
+            }
         }
-
-        if (isGameWonByPlayer(Player.PLAYER_O.getValue())) {
-            winner = Player.PLAYER_O.getValue();
-        }
-
         return winner;
     }
 
