@@ -311,4 +311,9 @@ public class GameTest {
     public void playAtShouldShouldThrowExceptionIfRowIsGreaterThanTwo() throws InvalidMoveException {
         game.playAt(3, POSITION_ONE);
     }
+
+    @Test(expected = InvalidMoveException.class)
+    public void playAtShouldShouldThrowExceptionIfColumnIsLessThanZero() throws InvalidMoveException {
+        game.playAt(POSITION_ZERO, -POSITION_ONE);
+    }
 }

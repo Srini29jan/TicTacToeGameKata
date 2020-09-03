@@ -16,7 +16,8 @@ public class Game {
     }
 
     public void playAt(int row, int column) throws InvalidMoveException {
-        if (row >= POSITION_ZERO && row <= POSITION_TWO) {
+        if (row >= POSITION_ZERO && row <= POSITION_TWO
+                && column >= POSITION_ZERO) {
             char currentPlayer = getCurrentPlayer();
             board[row][column] = currentPlayer;
             numberOfCellsFilled++;
