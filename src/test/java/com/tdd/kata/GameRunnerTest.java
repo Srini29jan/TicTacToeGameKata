@@ -1,7 +1,9 @@
 package com.tdd.kata;
 
+import com.tdd.kata.io.InputScanner;
 import org.hamcrest.core.Is;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertThat;
 
@@ -23,6 +25,15 @@ public class GameRunnerTest {
         testableGameRunner.play();
 
         assertThat(testableGameRunner.getMessage(), Is.is(instruction));
+    }
+
+    @Test
+    public void positionInputShouldBeCollectedAfterPrintingInstructions() {
+        InputScanner scanner = Mockito.mock(InputScanner.class);
+
+        new GameRunner(scanner).play();
+
+        Mockito.verify(scanner, Mockito.atLeastOnce()).nextLine();
     }
 
     private class TestableGameRunner extends GameRunner {

@@ -1,10 +1,21 @@
 package com.tdd.kata;
 
+import com.tdd.kata.io.InputScanner;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GameRunner {
     private static final Logger logger = Logger.getLogger(GameRunner.class.getName());
+    private final InputScanner scanner;
+
+    public GameRunner() {
+        this(new InputScanner());
+    }
+
+    public GameRunner(InputScanner scanner) {
+        this.scanner = scanner;
+    }
 
     public void play() {
         StringBuilder instruction = new StringBuilder("Welcome to TicTacToe game!!\n")
@@ -18,6 +29,8 @@ public class GameRunner {
                 .append("Players cannot play on a position which is already played\n")
                 .append("Mark your position:\n");
         print(instruction.toString());
+
+        scanner.nextLine();
     }
 
     protected void print(String message) {
