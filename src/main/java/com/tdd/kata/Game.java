@@ -6,8 +6,6 @@ public class Game {
     private static final int POSITION_ZERO = 0;
     private static final int POSITION_ONE = 1;
     private static final int POSITION_TWO = 2;
-    private static final char PLAYER_X = 'X';
-    private static final char PLAYER_O = 'O';
     private static final char CHARACTER_NULL = '\0';
     private final char[][] board = new char[GRID_SIZE][GRID_SIZE];
     private char previousPlayer;
@@ -29,17 +27,17 @@ public class Game {
     }
 
     private char getCurrentPlayer() {
-        return previousPlayer == PLAYER_X ? PLAYER_O : PLAYER_X;
+        return previousPlayer == Player.PLAYER_X.getValue() ? Player.PLAYER_O.getValue() : Player.PLAYER_X.getValue();
     }
 
     public char getWinner() {
         char winner = CHARACTER_NULL;
-        if (isGameWonByPlayer(PLAYER_X)) {
-            winner = PLAYER_X;
+        if (isGameWonByPlayer(Player.PLAYER_X.getValue())) {
+            winner = Player.PLAYER_X.getValue();
         }
 
-        if (isGameWonByPlayer(PLAYER_O)) {
-            winner = PLAYER_O;
+        if (isGameWonByPlayer(Player.PLAYER_O.getValue())) {
+            winner = Player.PLAYER_O.getValue();
         }
 
         return winner;
@@ -94,7 +92,7 @@ public class Game {
 
     public boolean isOver() {
         char winner = getWinner();
-        return winner == PLAYER_X || winner == PLAYER_O || isDraw();
+        return winner == Player.PLAYER_X.getValue() || winner == Player.PLAYER_O.getValue() || isDraw();
     }
 
     public boolean isDraw() {
