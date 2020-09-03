@@ -92,7 +92,7 @@ public class Game {
     }
 
     public boolean isOver() {
-        return false;
+        return getWinner() == PLAYER_X;
     }
 
     public boolean isDraw() {
