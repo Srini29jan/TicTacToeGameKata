@@ -93,7 +93,8 @@ public class Game {
     }
 
     public boolean isOver() {
-        return getWinner() == PLAYER_X || getWinner() == PLAYER_O;
+        char winner = getWinner();
+        return winner == PLAYER_X || winner == PLAYER_O || isDraw();
     }
 
     public boolean isDraw() {
