@@ -10,6 +10,7 @@ public class Game {
     private static final char PLAYER_O = 'O';
     private final char[][] board = new char[GRID_SIZE][GRID_SIZE];
     private char previousPlayer;
+    private int numberOfCellsFilled = 0;
 
     public char getPlayerAt(int row, int column) {
         return board[row][column];
@@ -18,6 +19,7 @@ public class Game {
     public void playAt(int row, int column) {
         char currentPlayer = getCurrentPlayer();
         board[row][column] = currentPlayer;
+        numberOfCellsFilled++;
         setPreviousPlayer(currentPlayer);
     }
 
@@ -94,6 +96,10 @@ public class Game {
     }
 
     public boolean isDraw() {
-        return false;
+        boolean isDraw = false;
+        if (numberOfCellsFilled == 9 && getWinner() == '\0') {
+            isDraw = true;
+        }
+        return isDraw;
     }
 }

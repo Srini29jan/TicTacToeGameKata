@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class GameTest {
 
@@ -248,5 +249,20 @@ public class GameTest {
         game.playAt(POSITION_ZERO, POSITION_TWO);
 
         assertThat(game.getWinner(), is(CHARACTER_NULL));
+    }
+
+    @Test
+    public void isDrawShouldReturnTrueIfAllCellsAreFilledAndNeitherPlayerWon() {
+        game.playAt(POSITION_ZERO, POSITION_ZERO);
+        game.playAt(POSITION_ONE, POSITION_ONE);
+        game.playAt(POSITION_TWO, POSITION_ZERO);
+        game.playAt(POSITION_ONE, POSITION_ZERO);
+        game.playAt(POSITION_ONE, POSITION_TWO);
+        game.playAt(POSITION_ZERO, POSITION_ONE);
+        game.playAt(POSITION_TWO, POSITION_ONE);
+        game.playAt(POSITION_TWO, POSITION_TWO);
+        game.playAt(POSITION_ZERO, POSITION_TWO);
+
+        assertTrue(game.isDraw());
     }
 }
