@@ -8,6 +8,7 @@ public class Game {
     private static final int POSITION_TWO = 2;
     private static final char PLAYER_X = 'X';
     private static final char PLAYER_O = 'O';
+    private static final char CHARACTER_NULL = '\0';
     private final char[][] board = new char[GRID_SIZE][GRID_SIZE];
     private char previousPlayer;
     private int numberOfCellsFilled = 0;
@@ -32,7 +33,7 @@ public class Game {
     }
 
     public char getWinner() {
-        char winner = '\0';
+        char winner = CHARACTER_NULL;
         if (isGameWonByPlayer(PLAYER_X)) {
             winner = PLAYER_X;
         }
@@ -97,7 +98,7 @@ public class Game {
 
     public boolean isDraw() {
         boolean isDraw = false;
-        if (numberOfCellsFilled == 9 && getWinner() == '\0') {
+        if (numberOfCellsFilled == 9 && getWinner() == CHARACTER_NULL) {
             isDraw = true;
         }
         return isDraw;
