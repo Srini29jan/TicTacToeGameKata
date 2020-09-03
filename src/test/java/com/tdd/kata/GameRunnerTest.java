@@ -22,13 +22,13 @@ public class GameRunnerTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+
+        Mockito.when(scanner.nextLine()).thenReturn("2 0");
+        Mockito.when(game.isOver()).thenReturn(false, true);
     }
 
     @Test
     public void instructionsShouldBePrintedOnGameStart() {
-        Mockito.when(scanner.nextLine()).thenReturn("2 0");
-        Mockito.when(game.isOver()).thenReturn(false, true);
-
         String instruction = new StringBuilder("Welcome to TicTacToe game!!\n")
                 .append("This is a game on a board of size 3x3\n")
                 .append("Position of each box is represented by a combination of two numbers as below\n")
@@ -48,9 +48,6 @@ public class GameRunnerTest {
 
     @Test
     public void positionInputShouldBeCollectedAfterPrintingInstructions() {
-        Mockito.when(scanner.nextLine()).thenReturn("2 0");
-        Mockito.when(game.isOver()).thenReturn(false, true);
-
         gameRunner.play();
 
         Mockito.verify(scanner, Mockito.atLeastOnce()).nextLine();
@@ -58,9 +55,6 @@ public class GameRunnerTest {
 
     @Test
     public void collectedPositionInputShouldBePassedToGame() {
-        Mockito.when(scanner.nextLine()).thenReturn("2 0");
-        Mockito.when(game.isOver()).thenReturn(false, true);
-
         gameRunner.play();
 
         Mockito.verify(game, Mockito.atLeastOnce()).playAt(2, 0);
@@ -68,9 +62,7 @@ public class GameRunnerTest {
 
     @Test
     public void gameShouldBePlayedUntilItsOver() {
-        Mockito.when(scanner.nextLine()).thenReturn("2 0");
-        Mockito.when(scanner.nextLine()).thenReturn("1 0");
-        Mockito.when(scanner.nextLine()).thenReturn("2 1");
+        Mockito.when(scanner.nextLine()).thenReturn("2 0", "1 0", "2 1");
         Mockito.when(game.isOver()).thenReturn(false, false, false, true);
 
         gameRunner.play();
