@@ -16,8 +16,7 @@ public class Game {
     }
 
     public void playAt(int row, int column) throws InvalidMoveException {
-        if (row >= POSITION_ZERO && row <= POSITION_TWO
-                && column >= POSITION_ZERO && column <= POSITION_TWO) {
+        if (isValidPosition(row, column)) {
             char currentPlayer = getCurrentPlayer();
             board[row][column] = currentPlayer;
             numberOfCellsFilled++;
@@ -25,6 +24,11 @@ public class Game {
         } else {
             throw new InvalidMoveException("Invalid position; please choose from position 0 or 1 or 2");
         }
+    }
+
+    private boolean isValidPosition(int row, int column) {
+        return row >= POSITION_ZERO && row <= POSITION_TWO
+                && column >= POSITION_ZERO && column <= POSITION_TWO;
     }
 
     private void setPreviousPlayer(char currentPlayer) {
