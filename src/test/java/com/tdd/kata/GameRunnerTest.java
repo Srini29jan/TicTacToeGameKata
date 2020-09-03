@@ -1,12 +1,19 @@
 package com.tdd.kata;
 
 import com.tdd.kata.io.InputScanner;
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class GameRunnerTest {
 
@@ -23,8 +30,8 @@ public class GameRunnerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        Mockito.when(scanner.nextLine()).thenReturn("2 0");
-        Mockito.when(game.isOver()).thenReturn(false, true);
+        when(scanner.nextLine()).thenReturn("2 0");
+        when(game.isOver()).thenReturn(false, true);
     }
 
     @Test
@@ -43,32 +50,32 @@ public class GameRunnerTest {
 
         testableGameRunner.play();
 
-        assertThat(testableGameRunner.getMessage(), Is.is(instruction));
+        assertThat(testableGameRunner.getMessage(), is(instruction));
     }
 
     @Test
     public void positionInputShouldBeCollectedAfterPrintingInstructions() {
         gameRunner.play();
 
-        Mockito.verify(scanner, Mockito.atLeastOnce()).nextLine();
+        verify(scanner, atLeastOnce()).nextLine();
     }
 
     @Test
     public void collectedPositionInputShouldBePassedToGame() {
         gameRunner.play();
 
-        Mockito.verify(game, Mockito.atLeastOnce()).playAt(2, 0);
+        verify(game, atLeastOnce()).playAt(2, 0);
     }
 
     @Test
     public void gameShouldBePlayedUntilItsOver() {
-        Mockito.when(scanner.nextLine()).thenReturn("2 0", "1 0", "2 1");
-        Mockito.when(game.isOver()).thenReturn(false, false, false, true);
+        when(scanner.nextLine()).thenReturn("2 0", "1 0", "2 1");
+        when(game.isOver()).thenReturn(false, false, false, true);
 
         gameRunner.play();
 
-        Mockito.verify(scanner, Mockito.times(3)).nextLine();
-        Mockito.verify(game, Mockito.times(3)).playAt(Matchers.anyInt(), Matchers.anyInt());
+        verify(scanner, times(3)).nextLine();
+        verify(game, times(3)).playAt(anyInt(), anyInt());
     }
 
     private class TestableGameRunner extends GameRunner {
