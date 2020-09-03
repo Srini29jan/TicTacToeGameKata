@@ -20,6 +20,32 @@ public class GameRunner {
     }
 
     public void play() {
+        printInitialInstructions();
+
+        playGame();
+
+        printGameResult();
+    }
+
+    private void printGameResult() {
+        if (game.isDraw()) {
+            print("Game is draw!!");
+        } else {
+            print("Player " + game.getWinner() + " won!!");
+        }
+    }
+
+    private void playGame() {
+        while (!game.isOver()) {
+            String position = scanner.nextLine();
+            int row = Integer.valueOf(position.substring(0, 1));
+            int column = Integer.valueOf(position.substring(2));
+
+            game.playAt(row, column);
+        }
+    }
+
+    private void printInitialInstructions() {
         StringBuilder instruction = new StringBuilder("Welcome to TicTacToe game!!\n")
                 .append("This is a game on a board of size 3x3\n")
                 .append("Position of each box is represented by a combination of two numbers as below\n")
@@ -31,20 +57,6 @@ public class GameRunner {
                 .append("Players cannot play on a position which is already played\n")
                 .append("Mark your position:\n");
         print(instruction.toString());
-
-        while (!game.isOver()) {
-            String position = scanner.nextLine();
-            int row = Integer.valueOf(position.substring(0, 1));
-            int column = Integer.valueOf(position.substring(2));
-
-            game.playAt(row, column);
-        }
-
-        if (game.isDraw()) {
-            print("Game is draw!!");
-        } else {
-            print("Player " + game.getWinner() + " won!!");
-        }
     }
 
     protected void print(String message) {
