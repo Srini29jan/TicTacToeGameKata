@@ -19,3 +19,21 @@
  Maven 3.6.3+
  Mockito 1.10.19+
  ~~~
+# Set up application
+## IDE
+1. Clone the repository https://github.com/Srini29jan/TicTacToeGameKata
+2. Add as Maven project
+3. Select Project SDK as JDK 1.8
+
+## command prompt
+1. Clone repository from GIT 'https://github.com/Srini29jan/TicTacToeGameKata'
+2. Run `mvn clean install`
+
+# Run Test Cases
+## IDE
+1. Navigate to Maven Toolbar
+2. Select `test` under lifecycle menu and click on play symbol
+
+## Command Prompt
+1. Go to the directory where you have cloned the Tennis program (C:\Study\Workspace\TennisGame)
+2. Run `mvn test`
